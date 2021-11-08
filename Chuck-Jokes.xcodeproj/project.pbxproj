@@ -9,21 +9,25 @@
 /* Begin PBXBuildFile section */
 		C98AC2722734777C00C7FADD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C98AC2712734777C00C7FADD /* AppDelegate.swift */; };
 		C98AC2742734777C00C7FADD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C98AC2732734777C00C7FADD /* SceneDelegate.swift */; };
-		C98AC2762734777C00C7FADD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C98AC2752734777C00C7FADD /* ViewController.swift */; };
 		C98AC2792734777C00C7FADD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C98AC2772734777C00C7FADD /* Main.storyboard */; };
 		C98AC27B2734777E00C7FADD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C98AC27A2734777E00C7FADD /* Assets.xcassets */; };
 		C98AC27E2734777E00C7FADD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C98AC27C2734777E00C7FADD /* LaunchScreen.storyboard */; };
+		C98AC2892734845900C7FADD /* OneJoke.swift in Sources */ = {isa = PBXBuildFile; fileRef = C98AC2882734845900C7FADD /* OneJoke.swift */; };
+		C98CDFC927355DB800FF1673 /* JokeCategoriesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C98CDFC827355DB800FF1673 /* JokeCategoriesTableViewController.swift */; };
+		C98CDFCF27359B4300FF1673 /* OneJokeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C98CDFCE27359B4300FF1673 /* OneJokeViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		C98AC26E2734777C00C7FADD /* Chuck-Jokes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Chuck-Jokes.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C98AC2712734777C00C7FADD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C98AC2732734777C00C7FADD /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		C98AC2752734777C00C7FADD /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		C98AC2782734777C00C7FADD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C98AC27A2734777E00C7FADD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C98AC27D2734777E00C7FADD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C98AC27F2734777E00C7FADD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C98AC2882734845900C7FADD /* OneJoke.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneJoke.swift; sourceTree = "<group>"; };
+		C98CDFC827355DB800FF1673 /* JokeCategoriesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JokeCategoriesTableViewController.swift; sourceTree = "<group>"; };
+		C98CDFCE27359B4300FF1673 /* OneJokeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneJokeViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,15 +60,33 @@
 		C98AC2702734777C00C7FADD /* Chuck-Jokes */ = {
 			isa = PBXGroup;
 			children = (
+				C98AC287273483C100C7FADD /* Controller */,
+				C98AC286273483B200C7FADD /* Model */,
 				C98AC2712734777C00C7FADD /* AppDelegate.swift */,
 				C98AC2732734777C00C7FADD /* SceneDelegate.swift */,
-				C98AC2752734777C00C7FADD /* ViewController.swift */,
 				C98AC2772734777C00C7FADD /* Main.storyboard */,
 				C98AC27A2734777E00C7FADD /* Assets.xcassets */,
 				C98AC27C2734777E00C7FADD /* LaunchScreen.storyboard */,
 				C98AC27F2734777E00C7FADD /* Info.plist */,
 			);
 			path = "Chuck-Jokes";
+			sourceTree = "<group>";
+		};
+		C98AC286273483B200C7FADD /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				C98AC2882734845900C7FADD /* OneJoke.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		C98AC287273483C100C7FADD /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				C98CDFC827355DB800FF1673 /* JokeCategoriesTableViewController.swift */,
+				C98CDFCE27359B4300FF1673 /* OneJokeViewController.swift */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -138,9 +160,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C98AC2762734777C00C7FADD /* ViewController.swift in Sources */,
+				C98CDFCF27359B4300FF1673 /* OneJokeViewController.swift in Sources */,
 				C98AC2722734777C00C7FADD /* AppDelegate.swift in Sources */,
 				C98AC2742734777C00C7FADD /* SceneDelegate.swift in Sources */,
+				C98CDFC927355DB800FF1673 /* JokeCategoriesTableViewController.swift in Sources */,
+				C98AC2892734845900C7FADD /* OneJoke.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
