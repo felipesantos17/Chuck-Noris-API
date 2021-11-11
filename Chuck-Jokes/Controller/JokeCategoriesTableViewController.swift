@@ -1,45 +1,35 @@
 import UIKit
 
-// criando uma tratativa para o tipo de erro
-enum ServiceError: Error {
-    case invalidURL
-    case decodeFail(Error)
-    case network(Error?)
-}
 
 class JokeCategoriesTableViewController: UITableViewController {
     
     @IBOutlet weak var lblTitleApp: UILabel!
     
-    private let baseURL = "https://api.chucknorris.io/jokes"
-    
     var categories: [String] = []
+
+    private let pathCategories: String = "categories"
     
-    func getJokeCategoriesFromURL(callback: @escaping(Result<Any, ServiceError>) -> Void) {
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        fetch()
         
-        let pathCategories = "/categories"
-        
-        guard let urlCategories = URL(string: baseURL + pathCategories) else {
-            callback(.failure(.invalidURL))
-            return
-        }
-        
-        let task = URLSession.shared.dataTask(with: urlCategories) { data, response, error in
-            guard let data = data else {
-                callback(.failure(.network(error)))
-                return
+    }
+    
+    func fetch() {
+        ChuckAPI.getAPI(urlSent: pathCategories, expecting: [String].self, callback: (
+            { categoriesJokeResult in
+                DispatchQueue.main.async {
+                    switch categoriesJokeResult {
+                    case let .failure(error):
+                        print(error)
+                    case let .success(data):
+                        print(data)
+                        self.categories = data
+                        self.tableView.reloadData()
+                    }
+                }
             }
-            
-            do {
-                let jokeCategories = try JSONSerialization.jsonObject(with: data) as! [String]
-                callback(.success(jokeCategories))
-            } catch {
-                print(callback(.failure(.decodeFail(error))))
-            }
-            
-        }
-        
-        task.resume()
+        ))
     }
     
     // MARK: - Function that selects a category
@@ -55,25 +45,6 @@ class JokeCategoriesTableViewController: UITableViewController {
 
             destination.selectedCategory = categories[indice]
             self.tableView.deselectRow(at: self.tableView.indexPathForSelectedRow!, animated: true)
-    }
-
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-         getJokeCategoriesFromURL(callback: ({ categoriesJokeResult in
-            DispatchQueue.main.async {
-                switch categoriesJokeResult {
-                    case let .failure(error):
-                        print(error)
-                    case let .success(data):
-                    self.lblTitleApp.text = "Select a category to see a joke"
-                    self.categories = data as! [String]
-                        print(data)
-                    self.tableView.reloadData()
-                }
-            }
-        }))
     }
     
     // MARK: - Table view data source

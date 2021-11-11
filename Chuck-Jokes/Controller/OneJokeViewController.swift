@@ -6,77 +6,51 @@ class OneJokeViewController: UIViewController {
     
     @IBOutlet weak var lblOneJokeThisCategory: UILabel!
     
-    var selectedCategory: String?
+    var selectedCategory: String!
     
     var joke: OneJoke?
     
-    private let baseURL = "https://api.chucknorris.io/jokes"
+    var screenJoke: OneJoke?
     
-    func getJokeOneCategoryFromURL(callback: @escaping(Result<Any, ServiceError>) -> Void) {
-        
-        let pathOneCategory = "/random?category=\(selectedCategory!)"
-        
-        guard let urlCategory = URL(string: baseURL + pathOneCategory) else {
-            callback(.failure(.invalidURL))
-            return
-        }
-        
-        let task = URLSession.shared.dataTask(with: urlCategory) { data, response, error in
-            guard let data = data else {
-                callback(.failure(.network(error)))
-                return
-            }
-            
-            // aqui nesse caso estou decodificando os dados (data) do jeito que eu defini no struct OneJoke
-            // e coloquei dentro de um "do" "catch" para verificar quando der erro
-            do {
-                let oneJoke = try JSONDecoder().decode(OneJoke.self, from: data)
-                callback(.success(oneJoke))
-            } catch {
-                callback(.failure(.decodeFail(error)))
-            }
-            
-        }
-        
-        task.resume()
+    func newURL(x: String) -> String {
+        let newSentURL = "random?category=\(x)"
+        return newSentURL
     }
     
-    @IBAction func btnMoreOneJoke() {
-        getJokeOneCategoryFromURL(callback: ({ oneJokeResult in
-            DispatchQueue.main.async {
-                switch oneJokeResult {
+    func fethJoke() {
+        
+        let sentCategorySelectedURL = newURL(x: selectedCategory)
+        print(sentCategorySelectedURL)
+        
+        ChuckAPI.getAPI(urlSent: sentCategorySelectedURL, expecting: OneJoke.self, callback: (
+            { categoriesJokeResult in
+                DispatchQueue.main.async {
+                    switch categoriesJokeResult {
                     case let .failure(error):
                         print(error)
                     case let .success(data):
                         print(data)
-                        self.joke = data as? OneJoke
+                        self.joke = data
                         self.lblOneJokeThisCategory.text = self.joke?.value
                         self.view.addSubview(self.lblOneJokeThisCategory)
+                    }
                 }
             }
-        }))
+        ))
+    }
+
+
+    @IBAction func btnMoreOneJoke() {
+        fethJoke()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        lblOneCategoryJoke.text = "The selected category was \((selectedCategory)!)"
+        lblOneCategoryJoke.text = "The selected category was \((selectedCategory) ?? "Random")"
         self.view.addSubview(lblOneCategoryJoke)
         
-        getJokeOneCategoryFromURL(callback: ({ oneJokeResult in
-            DispatchQueue.main.async {
-                switch oneJokeResult {
-                    case let .failure(error):
-                        print(error)
-                    case let .success(data):
-                        print(data)
-                        self.joke = data as? OneJoke
-                        self.lblOneJokeThisCategory.text = self.joke?.value
-                        self.view.addSubview(self.lblOneJokeThisCategory)
-                }
-            }
-        }))
-        
+        fethJoke()
     }
 
 }

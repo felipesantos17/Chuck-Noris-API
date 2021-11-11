@@ -15,6 +15,7 @@
 		C98AC2892734845900C7FADD /* OneJoke.swift in Sources */ = {isa = PBXBuildFile; fileRef = C98AC2882734845900C7FADD /* OneJoke.swift */; };
 		C98CDFC927355DB800FF1673 /* JokeCategoriesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C98CDFC827355DB800FF1673 /* JokeCategoriesTableViewController.swift */; };
 		C98CDFCF27359B4300FF1673 /* OneJokeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C98CDFCE27359B4300FF1673 /* OneJokeViewController.swift */; };
+		C9B90B46273C2BFD00438041 /* ChuckAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9B90B45273C2BFD00438041 /* ChuckAPI.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		C98AC2882734845900C7FADD /* OneJoke.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneJoke.swift; sourceTree = "<group>"; };
 		C98CDFC827355DB800FF1673 /* JokeCategoriesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JokeCategoriesTableViewController.swift; sourceTree = "<group>"; };
 		C98CDFCE27359B4300FF1673 /* OneJokeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneJokeViewController.swift; sourceTree = "<group>"; };
+		C9B90B45273C2BFD00438041 /* ChuckAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChuckAPI.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,6 +78,7 @@
 			isa = PBXGroup;
 			children = (
 				C98AC2882734845900C7FADD /* OneJoke.swift */,
+				C9B90B45273C2BFD00438041 /* ChuckAPI.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -161,6 +164,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C98CDFCF27359B4300FF1673 /* OneJokeViewController.swift in Sources */,
+				C9B90B46273C2BFD00438041 /* ChuckAPI.swift in Sources */,
 				C98AC2722734777C00C7FADD /* AppDelegate.swift in Sources */,
 				C98AC2742734777C00C7FADD /* SceneDelegate.swift in Sources */,
 				C98CDFC927355DB800FF1673 /* JokeCategoriesTableViewController.swift in Sources */,

@@ -1,8 +1,16 @@
 import Foundation
 
-// defini como eu quero que seja estruturado esses dados
-struct OneJoke: Decodable {
-    let categories: [String]?
-    let icon_url: String?
+struct OneJoke: Codable {
+    let id: String
+    let categories: [String]
+    let iconUrl: String
     let value: String
+    
+    enum CodingKeys: String, CodingKey {
+        case id
+        case categories
+        case iconUrl = "icon_url"
+        case value
+    }
+    
 }
